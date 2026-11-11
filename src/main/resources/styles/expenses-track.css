@@ -1,0 +1,216 @@
+.root {
+    -fx-background-color: #1E1E1E;
+    -fx-text-fill: #D4D4D4;
+    -color-bg-default: #1E1E1E;
+    -color-bg-subtle: #252526;
+    -color-bg-overlay: #252526;
+    -color-fg-default: #D4D4D4;
+    -color-fg-muted: #858B92;
+    -color-border-default: #2E3034;
+    -color-border-muted: #282A2E;
+    -color-accent-emphasis: #50545B;
+    -color-accent-subtle: rgba(255, 255, 255, 0.06);
+}
+
+.app-root {
+    -fx-background-color: #1E1E1E;
+}
+
+.editor-shell {
+    -fx-background-color: #1E1E1E;
+}
+
+.app-title {
+    -fx-text-fill: #E4E4E4;
+    -fx-font-size: 20px;
+    -fx-font-weight: 600;
+}
+
+.section-label {
+    -fx-text-fill: #8C9197;
+    -fx-font-size: 14px;
+}
+
+.editor-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 3;
+    -fx-border-color: transparent transparent #2A2B2E transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 3 4 3 4;
+    -fx-text-fill: #E2E2E2;
+    -fx-prompt-text-fill: #54585D;
+    -fx-highlight-fill: #30343B;
+    -fx-highlight-text-fill: #ECEFF4;
+    -fx-font-size: 14.5px;
+}
+
+.editor-field:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.025);
+    -fx-border-color: transparent transparent #35373B transparent;
+}
+
+.editor-field:focused {
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-border-color: transparent transparent #50545B transparent;
+}
+
+.amount-field {
+    -fx-text-fill: #EBEBEB;
+}
+
+.description-field {
+    -fx-text-fill: #D4D4D4;
+}
+
+.currency-combo {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 3;
+    -fx-border-color: transparent transparent #2A2B2E transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0;
+    -fx-font-size: 14.5px;
+}
+
+.currency-combo:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.025);
+    -fx-border-color: transparent transparent #35373B transparent;
+}
+
+.currency-combo:focused {
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-border-color: transparent transparent #50545B transparent;
+}
+
+.currency-combo > .text-input {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #C8CCD0;
+    -fx-padding: 3 2 3 4;
+    -fx-highlight-fill: #30343B;
+    -fx-highlight-text-fill: #ECEFF4;
+}
+
+.currency-combo > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5 0 2;
+}
+
+.currency-combo > .arrow-button > .arrow {
+    -fx-background-color: #6B7076;
+    -fx-scale-x: 0.78;
+    -fx-scale-y: 0.78;
+}
+
+.combo-box-popup > .list-view {
+    -fx-background-color: #252526;
+    -fx-border-color: #36383C;
+    -fx-border-width: 1;
+    -fx-padding: 4 0 4 0;
+}
+
+.combo-box-popup > .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #D4D4D4;
+    -fx-padding: 5 10 5 10;
+}
+
+.combo-box-popup > .list-view .list-cell:hover,
+.combo-box-popup > .list-view .list-cell:filled:selected {
+    -fx-background-color: #323438;
+    -fx-text-fill: #ECEFF4;
+}
+
+.expense-row {
+    -fx-background-color: transparent;
+    -fx-background-radius: 4;
+    -fx-padding: 2 4 2 0;
+}
+
+.expense-row:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.018);
+}
+
+.percentage-comment {
+    -fx-text-fill: #787E85;
+    -fx-font-size: 13.5px;
+    -fx-padding: 0 4 0 12;
+}
+
+.row-delete-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #6D737A;
+    -fx-font-size: 14px;
+    -fx-padding: 1 5 1 5;
+    -fx-cursor: hand;
+}
+
+.row-delete-btn:hover {
+    -fx-text-fill: #D47A7A;
+    -fx-background-color: rgba(212, 122, 122, 0.10);
+    -fx-background-radius: 3;
+}
+
+.editor-scroll {
+    -fx-background-color: #1E1E1E;
+    -fx-background: #1E1E1E;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.editor-scroll > .viewport {
+    -fx-background-color: #1E1E1E;
+}
+
+.editor-scroll .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8;
+}
+
+.editor-scroll .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.editor-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #303236;
+    -fx-background-radius: 4;
+}
+
+.editor-scroll .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #45484E;
+}
+
+.editor-scroll .scroll-bar .increment-button,
+.editor-scroll .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+
+.summary-divider {
+    -fx-background-color: #2B2D30;
+    -fx-pref-height: 1;
+    -fx-max-height: 1;
+}
+
+.summary-total-label {
+    -fx-text-fill: #E4E4E4;
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+}
+
+.summary-rest-label {
+    -fx-text-fill: #D4D4D4;
+    -fx-font-size: 14.5px;
+}
+
+.summary-rest-negative {
+    -fx-text-fill: #D47A7A;
+}
+
+.status-notice {
+    -fx-text-fill: #8E949B;
+    -fx-font-size: 12px;
+}
