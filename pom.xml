@@ -29,6 +29,7 @@
         <jpackage.input.dir>${project.build.directory}/jpackage-input</jpackage.input.dir>
         <jpackage.output.dir>${project.basedir}/dist</jpackage.output.dir>
         <jpackage.type>app-image</jpackage.type>
+        <jpackage.icon>${project.basedir}/packaging/linux/ExpensesTrack.png</jpackage.icon>
     </properties>
 
     <dependencyManagement>
@@ -223,6 +224,8 @@
                                         <argument>${app.mainClass}</argument>
                                         <argument>--dest</argument>
                                         <argument>${jpackage.output.dir}</argument>
+                                        <argument>--icon</argument>
+                                        <argument>${jpackage.icon}</argument>
                                     </arguments>
                                 </configuration>
                             </execution>
@@ -230,6 +233,44 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+
+        <profile>
+            <id>os-mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <jpackage.icon>${project.basedir}/packaging/macos/ExpensesTrack.icns</jpackage.icon>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.openjfx</groupId>
+                        <artifactId>javafx-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>${app.fxMainClass}</mainClass>
+                            <options>
+                                <option>-Xdock:icon=${project.basedir}/packaging/macos/ExpensesTrack.icns</option>
+                            </options>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>os-windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <jpackage.icon>${project.basedir}/packaging/windows/ExpensesTrack.ico</jpackage.icon>
+            </properties>
         </profile>
     </profiles>
 </project>

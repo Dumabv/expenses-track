@@ -11,8 +11,11 @@ import com.expensestrack.storage.TrackerData;
 import com.expensestrack.ui.MainView;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.time.Duration;
 
@@ -20,6 +23,7 @@ public class ExpensesTrackApp extends Application {
 
     private static final System.Logger LOGGER = System.getLogger(ExpensesTrackApp.class.getName());
     private static final String STYLESHEET_PATH = "/styles/expenses-track.css";
+    private static final String ICON_PATH = "/icons/app-icon.png";
 
     private AutoSaveCoordinator autoSaveCoordinator;
 
@@ -62,6 +66,7 @@ public class ExpensesTrackApp extends Application {
         stage.setTitle("Expenses Track");
         stage.setMinWidth(460);
         stage.setMinHeight(380);
+        applyAppIcon(stage);
         stage.setScene(scene);
         stage.setOnCloseRequest(event -> shutdownAutoSave());
         stage.show();
@@ -77,6 +82,18 @@ public class ExpensesTrackApp extends Application {
     private void shutdownAutoSave() {
         if (autoSaveCoordinator != null) {
             autoSaveCoordinator.close();
+        }
+    }
+
+    private void applyAppIcon(Stage stage) {
+        try (InputStream fxIconStream = ExpensesTrackApp.class.getResourceAsStream(ICON_PATH)) {
+            if (fxIconStream != null) {
+                stage.getIcons().add(new Image(fxIconStream));
+            } else {
+                LOGGER.log(System.Logger.Level.WARNING, "Icon resource not found: {0}", ICON_PATH);
+            }
+        } catch (IOException ex) {
+            LOGGER.log(System.Logger.Level.WARNING, "Could not load window icon", ex);
         }
     }
 }

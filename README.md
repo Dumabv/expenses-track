@@ -142,8 +142,10 @@ jpackage \
   --input target/jpackage-input \
   --main-jar expenses-track-1.0.0.jar \
   --main-class com.expensestrack.Launcher \
+  --icon packaging/macos/ExpensesTrack.icns \
   --dest dist
 ```
+(Replace `--icon` with `packaging/windows/ExpensesTrack.ico` on Windows or `packaging/linux/ExpensesTrack.png` on Linux; the Maven `-Pjpackage` profile selects the right icon per OS automatically.)
 
 ---
 
