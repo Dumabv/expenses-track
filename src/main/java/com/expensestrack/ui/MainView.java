@@ -12,6 +12,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -39,11 +41,16 @@ public class MainView extends StackPane {
         VBox editorShell = new VBox();
         editorShell.getStyleClass().add("editor-shell");
         editorShell.setMaxWidth(760);
-        editorShell.setPadding(new Insets(36, 48, 24, 48));
+        editorShell.setPadding(new Insets(36, 40, 24, 40));
+
+        widthProperty().addListener((obs, oldW, newW) -> {
+            double horizontalPadding = newW.doubleValue() < 540 ? 22 : 40;
+            editorShell.setPadding(new Insets(32, horizontalPadding, 24, horizontalPadding));
+        });
 
         Label titleLabel = new Label("Expenses Track");
         titleLabel.getStyleClass().add("app-title");
-        titleLabel.setStyle("-fx-font-family: \"" + UiFormatting.resolveTitleFontFamily() + "\";");
+        titleLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 20));
         VBox.setMargin(titleLabel, new Insets(0, 0, 22, 0));
 
         expenseListView = new ExpenseListView(

@@ -62,14 +62,14 @@ public class ExpenseRow extends HBox {
         this.actions = Objects.requireNonNull(actions, "RowActions must not be null");
 
         setAlignment(Pos.CENTER_LEFT);
-        setSpacing(6);
+        setSpacing(4);
         getStyleClass().add("expense-row");
 
         amountField = new TextField(initialAmount);
         amountField.setPromptText("0");
         amountField.getStyleClass().addAll("editor-field", "amount-field");
         UiFormatting.applyNumericFilter(amountField);
-        UiFormatting.makeAutoSizing(amountField, 34, 160);
+        UiFormatting.makeAutoSizing(amountField, 24, 160);
 
         descriptionField = new TextField(initialDescription);
         descriptionField.setPromptText("description");
@@ -78,7 +78,9 @@ public class ExpenseRow extends HBox {
 
         percentageLabel = new Label();
         percentageLabel.getStyleClass().add("percentage-comment");
-        percentageLabel.setMinWidth(Region.USE_PREF_SIZE);
+        percentageLabel.setAlignment(Pos.CENTER_LEFT);
+        percentageLabel.setMinWidth(98);
+        percentageLabel.setPrefWidth(Region.USE_COMPUTED_SIZE);
 
         deleteButton = new Button("×");
         deleteButton.getStyleClass().add("row-delete-btn");

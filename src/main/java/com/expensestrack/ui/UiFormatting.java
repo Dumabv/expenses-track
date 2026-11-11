@@ -24,23 +24,11 @@ final class UiFormatting {
             "Liberation Mono"
     );
 
-    private static final List<String> PREFERRED_UI_FONTS = List.of(
-            "SF Pro Text",
-            "Inter",
-            "Segoe UI",
-            "Helvetica Neue",
-            "Ubuntu"
-    );
-
     private UiFormatting() {
     }
 
     static String resolveEditorFontFamily() {
         return pickInstalledFont(PREFERRED_MONO_FONTS, "Monospaced");
-    }
-
-    static String resolveTitleFontFamily() {
-        return pickInstalledFont(PREFERRED_UI_FONTS, "System");
     }
 
     static void applyNumericFilter(TextField field) {
@@ -60,7 +48,7 @@ final class UiFormatting {
             String text = field.getText();
             String sample = (text == null || text.isEmpty()) ? field.getPromptText() : text;
             measurer.setText(sample == null ? "" : sample);
-            double measured = Math.ceil(measurer.getLayoutBounds().getWidth()) + 14;
+            double measured = Math.ceil(measurer.getLayoutBounds().getWidth()) + 10;
             double clamped = Math.max(minWidth, Math.min(maxWidth, measured));
             field.setPrefWidth(clamped);
             field.setMinWidth(clamped);

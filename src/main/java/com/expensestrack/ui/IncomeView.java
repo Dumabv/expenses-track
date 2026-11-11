@@ -42,7 +42,7 @@ public class IncomeView extends HBox {
 
         amountField = new TextField();
         amountField.setPromptText("0");
-        amountField.getStyleClass().addAll("editor-field", "amount-field");
+        amountField.getStyleClass().addAll("editor-field", "amount-field", "income-field");
         UiFormatting.applyNumericFilter(amountField);
         UiFormatting.makeAutoSizing(amountField, 38, 180);
 

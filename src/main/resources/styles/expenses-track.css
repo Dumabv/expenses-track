@@ -21,9 +21,7 @@
 }
 
 .app-title {
-    -fx-text-fill: #E4E4E4;
-    -fx-font-size: 20px;
-    -fx-font-weight: 600;
+    -fx-text-fill: #E8E8E8;
 }
 
 .section-label {
@@ -35,7 +33,7 @@
     -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-background-radius: 3;
-    -fx-border-color: transparent transparent #2A2B2E transparent;
+    -fx-border-color: transparent;
     -fx-border-width: 0 0 1 0;
     -fx-padding: 3 4 3 4;
     -fx-text-fill: #E2E2E2;
@@ -45,29 +43,34 @@
     -fx-font-size: 14.5px;
 }
 
+.income-field {
+    -fx-border-color: transparent transparent #2E3034 transparent;
+}
+
 .editor-field:hover {
     -fx-background-color: rgba(255, 255, 255, 0.025);
-    -fx-border-color: transparent transparent #35373B transparent;
+    -fx-border-color: transparent transparent #383B40 transparent;
 }
 
 .editor-field:focused {
     -fx-background-color: rgba(255, 255, 255, 0.04);
-    -fx-border-color: transparent transparent #50545B transparent;
+    -fx-border-color: transparent transparent #555961 transparent;
 }
 
 .amount-field {
-    -fx-text-fill: #EBEBEB;
+    -fx-text-fill: #ECECEC;
+    -fx-padding: 3 3 3 3;
 }
 
 .description-field {
-    -fx-text-fill: #D4D4D4;
+    -fx-text-fill: #D6D6D6;
 }
 
 .currency-combo {
     -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-background-radius: 3;
-    -fx-border-color: transparent transparent #2A2B2E transparent;
+    -fx-border-color: transparent transparent #2E3034 transparent;
     -fx-border-width: 0 0 1 0;
     -fx-padding: 0;
     -fx-font-size: 14.5px;
@@ -75,12 +78,12 @@
 
 .currency-combo:hover {
     -fx-background-color: rgba(255, 255, 255, 0.025);
-    -fx-border-color: transparent transparent #35373B transparent;
+    -fx-border-color: transparent transparent #383B40 transparent;
 }
 
 .currency-combo:focused {
     -fx-background-color: rgba(255, 255, 255, 0.04);
-    -fx-border-color: transparent transparent #50545B transparent;
+    -fx-border-color: transparent transparent #555961 transparent;
 }
 
 .currency-combo > .text-input {
@@ -125,11 +128,11 @@
 .expense-row {
     -fx-background-color: transparent;
     -fx-background-radius: 4;
-    -fx-padding: 2 4 2 0;
+    -fx-padding: 1 4 1 0;
 }
 
 .expense-row:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.018);
+    -fx-background-color: rgba(255, 255, 255, 0.015);
 }
 
 .percentage-comment {
