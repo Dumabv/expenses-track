@@ -1,0 +1,21 @@
+# Maven build output
+target/
+
+# Packaging output
+dist/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# macOS / OS metadata
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+hs_err_pid*
