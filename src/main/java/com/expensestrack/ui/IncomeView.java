@@ -118,8 +118,7 @@ public class IncomeView extends HBox {
                     } finally {
                         suppressEvents = false;
                     }
-                    onCurrencyChanged.accept(Income.DEFAULT_CURRENCY);
-                    lastNotifiedCurrency = Income.DEFAULT_CURRENCY;
+                    notifyCurrencyIfValid(Income.DEFAULT_CURRENCY, onCurrencyChanged);
                 }
             }
         });

@@ -93,7 +93,7 @@ public class AutoSaveCoordinator implements AutoCloseable {
                 scheduledTask = null;
             }
         }
-        flushPending();
+        // Wait for any in-flight scheduler write to finish before flushing the latest snapshot.
         scheduler.shutdown();
         try {
             if (!scheduler.awaitTermination(2, TimeUnit.SECONDS)) {
@@ -103,5 +103,6 @@ public class AutoSaveCoordinator implements AutoCloseable {
             Thread.currentThread().interrupt();
             scheduler.shutdownNow();
         }
+        flushPending();
     }
 }
