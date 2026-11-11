@@ -23,8 +23,12 @@
         <jackson.version>2.18.3</jackson.version>
         <junit.version>5.11.4</junit.version>
 
+        <app.name>Expenses Track</app.name>
         <app.mainClass>com.expensestrack.Launcher</app.mainClass>
         <app.fxMainClass>com.expensestrack.ExpensesTrackApp</app.fxMainClass>
+        <jpackage.input.dir>${project.build.directory}/jpackage-input</jpackage.input.dir>
+        <jpackage.output.dir>${project.basedir}/dist</jpackage.output.dir>
+        <jpackage.type>app-image</jpackage.type>
     </properties>
 
     <dependencyManagement>
@@ -89,6 +93,19 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${jpackage.output.dir}</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.0</version>
                 <configuration>
@@ -116,6 +133,51 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-runtime-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>runtime</includeScope>
+                            <outputDirectory>${jpackage.input.dir}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-app-jar-for-jpackage</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${jpackage.input.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>${project.build.finalName}.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
@@ -125,4 +187,49 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jpackage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>3.5.0</version>
+                        <executions>
+                            <execution>
+                                <id>run-jpackage</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>${java.home}/bin/jpackage</executable>
+                                    <arguments>
+                                        <argument>--type</argument>
+                                        <argument>${jpackage.type}</argument>
+                                        <argument>--name</argument>
+                                        <argument>${app.name}</argument>
+                                        <argument>--app-version</argument>
+                                        <argument>${project.version}</argument>
+                                        <argument>--vendor</argument>
+                                        <argument>Expenses Track</argument>
+                                        <argument>--input</argument>
+                                        <argument>${jpackage.input.dir}</argument>
+                                        <argument>--main-jar</argument>
+                                        <argument>${project.build.finalName}.jar</argument>
+                                        <argument>--main-class</argument>
+                                        <argument>${app.mainClass}</argument>
+                                        <argument>--dest</argument>
+                                        <argument>${jpackage.output.dir}</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
